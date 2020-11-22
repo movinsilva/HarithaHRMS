@@ -73,7 +73,8 @@ namespace HarithaHRMS
             try
             {
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + "/api/windowsservice/validateUserByUsernamePassword?username="
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + 
+                    "/api/windowsservice/validateUserByUsernamePassword?username="
                                                                 + textBox1.Text + "&password=" + textBox2.Text);
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 string content = new StreamReader(response.GetResponseStream()).ReadToEnd();

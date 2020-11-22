@@ -140,9 +140,14 @@ namespace HarithaHRMS
             openChildForm(new Notices());
         }
 
+        private void iconButton5_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new Report());
+        }
+
         private void iconButton5_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new Report());
         }
 
         private void label13_Click(object sender, EventArgs e)
@@ -784,5 +789,7 @@ namespace HarithaHRMS
                 ErrorLog.errorLogger(stackTrace: ex.StackTrace, message: ex.Message);
             }
         }
+
+        
     }
 }
