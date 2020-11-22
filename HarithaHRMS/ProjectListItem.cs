@@ -54,7 +54,7 @@ namespace HarithaHRMS
         private String _subLevelName;
         private bool _isActive;
         private DateTime _deadline;
-        private String _progress;
+        private int _progress;
         private String _priorityLevel;
 
         //[Category("Custom Props")]
@@ -93,10 +93,10 @@ namespace HarithaHRMS
             set { _deadline = value; label5.Text = value.ToString("dd/MM/yyyy"); }
         }
 
-        public String Progress
+        public int Progress
         {
             get { return _progress; }
-            set { _progress = value; label7.Text = value + "%"; progressBar1.Value = int.Parse(value); }
+            set { _progress = value; label7.Text = value + "%"; progressBar1.Value = value; }
         }
 
         public String PriorityLevel

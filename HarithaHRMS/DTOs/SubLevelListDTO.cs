@@ -48,7 +48,7 @@ namespace HarithaHRMS.DTOs
         public long ManHours { get; set; }
 
         [JsonProperty("progressFraction")]
-        public long ProgressFraction { get; set; }
+        public double ProgressFraction { get; set; }
 
         [JsonProperty("priorityLevel")]
         public long PriorityLevel { get; set; }

@@ -105,7 +105,7 @@ namespace HarithaHRMS
                             }
                         }
 
-                        var inactiveTimeFile = path + "tit.txt";
+                        var inactiveTimeFile = path + "tit.tlt";
                         if (File.Exists(inactiveTimeFile))
                         {
 
@@ -114,7 +114,7 @@ namespace HarithaHRMS
 
                         }
 
-                        var autocadTimeFile = path + "actt.txt";
+                        var autocadTimeFile = path + "actt.tlt";
                         if (File.Exists(autocadTimeFile))
                         {
 
@@ -123,7 +123,7 @@ namespace HarithaHRMS
 
                         }
 
-                        var wordTimeFile = path + "wtt.txt";
+                        var wordTimeFile = path + "wtt.tlt";
                         if (File.Exists(wordTimeFile))
                         {
 
@@ -132,7 +132,7 @@ namespace HarithaHRMS
 
                         }
 
-                        var excelTimeFile = path + "ett.txt";
+                        var excelTimeFile = path + "ett.tlt";
                         if (File.Exists(excelTimeFile))
                         {
 

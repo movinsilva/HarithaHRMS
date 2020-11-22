@@ -89,7 +89,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(184)))), ((int)(((byte)(190)))));
             this.panel1.Location = new System.Drawing.Point(393, 126);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(20, 151);
+            this.panel1.Size = new System.Drawing.Size(15, 151);
             this.panel1.TabIndex = 8;
             // 
             // panel2
@@ -102,11 +102,11 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(127, 146);
+            this.progressBar1.Location = new System.Drawing.Point(99, 146);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.progressBar1.RightToLeftLayout = true;
-            this.progressBar1.Size = new System.Drawing.Size(266, 54);
+            this.progressBar1.Size = new System.Drawing.Size(294, 54);
             this.progressBar1.Step = 100;
             this.progressBar1.TabIndex = 9;
             this.progressBar1.Value = 90;
@@ -114,11 +114,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(271, 221);
+            this.label3.Location = new System.Drawing.Point(252, 207);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 50);
+            this.label3.Size = new System.Drawing.Size(135, 70);
             this.label3.TabIndex = 10;
             this.label3.Text = "91%";
             // 
@@ -127,7 +127,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 18.33962F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.label4.Location = new System.Drawing.Point(12, 221);
+            this.label4.Location = new System.Drawing.Point(12, 71);
             this.label4.MaximumSize = new System.Drawing.Size(250, 100);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(166, 37);
@@ -136,11 +136,11 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 18.33962F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(388, 75);
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBox1.Location = new System.Drawing.Point(99, 288);
+            this.checkBox1.MinimumSize = new System.Drawing.Size(25, 25);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.Size = new System.Drawing.Size(25, 25);
             this.checkBox1.TabIndex = 12;
             this.checkBox1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -152,9 +152,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(25, 326);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 30);
+            this.label5.Size = new System.Drawing.Size(107, 30);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Progress";
+            this.label5.Text = "Progress :";
             // 
             // label6
             // 
@@ -225,7 +225,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(332, 69);
+            this.label12.Location = new System.Drawing.Point(34, 288);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 20);
             this.label12.TabIndex = 16;
@@ -251,12 +251,13 @@
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(89)))), ((int)(((byte)(103)))));
             this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(127, 333);
+            this.textBox1.Location = new System.Drawing.Point(127, 331);
             this.textBox1.MaxLength = 3;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(51, 27);
             this.textBox1.TabIndex = 18;
             this.textBox1.Text = "0";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SpecificProject
             // 

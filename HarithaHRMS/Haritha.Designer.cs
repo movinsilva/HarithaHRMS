@@ -68,6 +68,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -548,7 +549,7 @@
             // 
             // timer2
             // 
-            this.timer2.Interval = 6000;
+            this.timer2.Interval = 600000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // timer3
@@ -556,12 +557,24 @@
             this.timer3.Interval = 300000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.830189F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(903, 628);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(85, 17);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Upload e log";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
             // Haritha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(71)))), ((int)(((byte)(83)))));
             this.ClientSize = new System.Drawing.Size(1006, 654);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.iconPictureBox1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -639,5 +652,6 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Label label15;
     }
 }

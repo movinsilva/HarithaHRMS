@@ -61,7 +61,7 @@ namespace HarithaHRMS
                             SubLevelName = sublevel.Name,
                             IsActive = sublevel.IsActive,
                             Deadline = sublevel.Deadline,
-                            Progress = sublevel.ProgressFraction.ToString(),
+                            Progress = (int)(sublevel.ProgressFraction*100),
                             PriorityLevel = sublevel.PriorityLevel.ToString(),
                         }) ;
 

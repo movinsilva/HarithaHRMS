@@ -216,19 +216,19 @@ namespace HarithaHRMS
 
                     powerOffTime = DateTime.Now.Subtract(DateTime.Now);
 
-                    using (StreamWriter stream1 = File.CreateText(path + "tit.txt"))
+                    using (StreamWriter stream1 = File.CreateText(path + "tit.tlt"))
                     {
                         stream1.Write("0");
                     }
-                    using (StreamWriter stream2 = File.CreateText(path + "actt.txt"))
+                    using (StreamWriter stream2 = File.CreateText(path + "actt.tlt"))
                     {
                         stream2.Write("0");
                     }
-                    using (StreamWriter stream3 = File.CreateText(path + "wtt.txt"))
+                    using (StreamWriter stream3 = File.CreateText(path + "wtt.tlt"))
                     {
                         stream3.Write("0");
                     }
-                    using (StreamWriter stream4 = File.CreateText(path + "ett.txt"))
+                    using (StreamWriter stream4 = File.CreateText(path + "ett.tlt"))
                     {
                         stream4.Write("0");
                     }
@@ -278,7 +278,8 @@ namespace HarithaHRMS
 
                         if (bytearray.Length > 8000)
                         {
-                            HttpResponseMessage response = await client.PostAsync("http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + "/api/WindowsService/UploadAppLog", form);
+                            HttpResponseMessage response = await client.PostAsync("http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + 
+                                "/api/WindowsService/UploadAppLog", form);
                             var k = response.Content.ReadAsStringAsync().Result;
                             if (response.StatusCode == HttpStatusCode.OK)
                             {
@@ -348,9 +349,10 @@ namespace HarithaHRMS
                 Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new
                                 DateTime(1970, 1, 1))).TotalSeconds;
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + "/api/windowsservice/createdutyonoff?username="
-                                                              + RuntimeConstants.email + "&isdutyon=" + dutyOn + "&punchdatetime=" + unixTimestamp + "&powerofftime=" + powerOffTimeInMinutes +
-                                                              "&idletime=" + totalIdleTime + "&autocadtime=" + autocadT);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + 
+                    "/api/windowsservice/createdutyonoff?username="+ RuntimeConstants.email + "&isdutyon=" + dutyOn + "&punchdatetime=" + 
+                    unixTimestamp + "&powerofftime=" + powerOffTimeInMinutes + "&idletime=" + totalIdleTime + "&autocadtime=" + autocadT + 
+                    "&wordtime=" + wordT + "&exceltime=" + excelT);
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
@@ -524,7 +526,7 @@ namespace HarithaHRMS
                     //Saving the Image File (I am here Saving it in My E drive).
                     Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new
                                 DateTime(1970, 1, 1))).TotalSeconds;
-                    var s = path + RuntimeConstants.username.Substring(0, RuntimeConstants.email.LastIndexOf("@") < 0 ? 0 : RuntimeConstants.email.LastIndexOf("@")) + "_" + unixTimestamp + ".jpg";
+                    var s = path + RuntimeConstants.email.Substring(0, RuntimeConstants.email.LastIndexOf("@") < 0 ? 0 : RuntimeConstants.email.LastIndexOf("@")) + "_" + unixTimestamp + ".jpg";
                     captureBitmap.Save(s, ImageFormat.Jpeg);
                     //captureBitmap.Save(Path.Combine("D:\", Dat))'
                 }
@@ -535,32 +537,32 @@ namespace HarithaHRMS
 
 
                 //Recording last screenshot captured time in a text file in a case of power failure
-                using (StreamWriter stream = File.CreateText(path + "lsut.txt"))
+                using (StreamWriter stream = File.CreateText(path + "lsut.tlt"))
                 {
                     stream.Write(DateTime.Now.ToString());
                 }
 
                 //Recording total idle time in a text file as a backup in a case of power failure
-                using (StreamWriter stream1 = File.CreateText(path + "tit.txt"))
+                using (StreamWriter stream1 = File.CreateText(path + "tit.tlt"))
                 {
                     stream1.Write(totalIdleTime);
                 }
 
 
                 //Recording total autocad time in a text file as a backup in a case of power failure
-                using (StreamWriter stream2 = File.CreateText(path + "actt.txt"))
+                using (StreamWriter stream2 = File.CreateText(path + "actt.tlt"))
                 {
                     stream2.Write(autocadTimeCount);
                 }
 
                 //Recording total word time in a text file as a backup in a case of power failure
-                using (StreamWriter stream3 = File.CreateText(path + "wtt.txt"))
+                using (StreamWriter stream3 = File.CreateText(path + "wtt.tlt"))
                 {
                     stream3.Write(wordTimeCount);
                 }
 
                 //Recording total excel time in a text file as a backup in a case of power failure
-                using (StreamWriter stream4 = File.CreateText(path + "ett.txt"))
+                using (StreamWriter stream4 = File.CreateText(path + "ett.tlt"))
                 {
                     stream4.Write(excelTimeCount);
                 }
@@ -731,6 +733,56 @@ namespace HarithaHRMS
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+            uploadErrorLog();
+        }
+
+        private async void uploadErrorLog()
+        {
+            await Task.Delay(2000);
+            try
+            {
+
+                using (HttpClient client = new HttpClient())
+                {
+                    MultipartFormDataContent form = new MultipartFormDataContent();
+                    client.DefaultRequestHeaders.Clear();
+
+                    var file = path + "errorLogger.csv";
+
+                    if (File.Exists(file))
+                    {
+                        Int32 unixTimestamp = (Int32)(DateTime.Now.Subtract(new
+                           DateTime(1970, 1, 1))).TotalSeconds;
+
+                        var s = label1.Text.Substring(0, label1.Text.LastIndexOf("@")) + "_" + unixTimestamp + ".csv";
+                        var bytearray = File.ReadAllBytes(file);
+                        ByteArrayContent bytes = new ByteArrayContent(bytearray);
+                        form.Add(bytes, "file", s);
+                        //form.Add(new StringContent(DateTime.Now.ToString()), "uploaddate");
+                        if (bytearray.Length > 8000)
+                        {
+                            HttpResponseMessage response = await client.PostAsync("http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
+                                "/api/WindowsService/UploadLog", form);
+                            var k = response.Content.ReadAsStringAsync().Result;
+
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+
+                                File.Delete(file);
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLog.errorLogger(stackTrace: ex.StackTrace, message: ex.Message);
+            }
         }
     }
 }
