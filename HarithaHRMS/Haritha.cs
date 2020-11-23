@@ -184,6 +184,25 @@ namespace HarithaHRMS
 
                     //To make the inactive time log 0 in the first log
                     lastTime = DateTime.Now;
+
+
+                    using (StreamWriter stream1 = File.CreateText(path + "tit.tlt"))
+                    {
+                        stream1.Write("0");
+                    }
+                    using (StreamWriter stream2 = File.CreateText(path + "actt.tlt"))
+                    {
+                        stream2.Write("0");
+                    }
+                    using (StreamWriter stream3 = File.CreateText(path + "wtt.tlt"))
+                    {
+                        stream3.Write("0");
+                    }
+                    using (StreamWriter stream4 = File.CreateText(path + "ett.tlt"))
+                    {
+                        stream4.Write("0");
+                    }
+
                 }
                 else
                 {
@@ -496,9 +515,11 @@ namespace HarithaHRMS
             return Math.Ceiling(input * multiplier) / multiplier;
         }
 
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             startTime();
+
         }
 
         private void panel15_Paint(object sender, PaintEventArgs e)
@@ -506,9 +527,17 @@ namespace HarithaHRMS
 
         }
 
+        int no;
         private void timer2_Tick(object sender, EventArgs e)
         {
             ScreenshotCapturing();
+            no++;
+            if (no == 5)
+            {
+                notifyIcon1.Icon = SystemIcons.Application;
+                notifyIcon1.ShowBalloonTip(3000, "Haritha Consultations", "Update progress of your currently active project", ToolTipIcon.Info);
+                no = 0;
+            }
         }
 
         //Method to capture screenshots
@@ -790,6 +819,9 @@ namespace HarithaHRMS
             }
         }
 
-        
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

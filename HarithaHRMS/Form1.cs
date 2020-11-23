@@ -93,7 +93,7 @@ namespace HarithaHRMS
 
                     if (dutyStatus)
                     {
-                        var lastUploadingTimeFile = path + "lsut.txt";
+                        var lastUploadingTimeFile = path + "lsut.tlt";
                         if (File.Exists(lastUploadingTimeFile))
                         {
                             var time = File.ReadAllText(lastUploadingTimeFile);

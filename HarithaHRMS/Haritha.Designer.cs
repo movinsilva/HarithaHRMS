@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Haritha));
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
@@ -70,6 +71,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.label15 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -590,6 +592,16 @@
             this.label15.Text = "Upload e log";
             this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "fsdfsdf";
+            this.notifyIcon1.BalloonTipTitle = "dsfsdf";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Haritha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -676,5 +688,6 @@
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Label label15;
         private FontAwesome.Sharp.IconButton iconButton5;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
