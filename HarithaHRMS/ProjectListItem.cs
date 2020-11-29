@@ -79,10 +79,12 @@ namespace HarithaHRMS
                 if (value)
                 {
                     label3.Text = "Active";
+                    label3.ForeColor = Color.Green;
                 }
                 else
                 {
                     label3.Text = "Inactive";
+                    label3.ForeColor = Color.Gray;
                 }
             }
         }

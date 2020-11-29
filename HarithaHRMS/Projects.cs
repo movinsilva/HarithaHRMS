@@ -70,7 +70,7 @@ namespace HarithaHRMS
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Credentials", "Log in");
+                    MessageBox.Show("Error!");
                 }
 
             }

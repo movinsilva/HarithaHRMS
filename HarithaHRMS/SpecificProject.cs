@@ -87,7 +87,7 @@ namespace HarithaHRMS
                 int progressValue = int.Parse(textBox1.Text);
                 if (progressValue < 101 && progressValue > -1)
                 {
-                    if (progressValue > tag.ProgressFraction*100)
+                    if (progressValue >= tag.ProgressFraction*100)
                     {
                         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" +
                             RuntimeConstants.port + "/api/DraughtmanApi/SublevelProgressUpdate?sublevelid=" +

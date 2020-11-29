@@ -19,7 +19,7 @@ namespace HarithaHRMS
 
         public static bool dutyStatus;
 
-        private string path = Application.StartupPath;
+        private string path = "C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\profile\\configurations\\";
 
         //For rounded corners
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -73,6 +73,8 @@ namespace HarithaHRMS
             try
             {
 
+                System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\profile\\configurations\\");
+
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + 
                     "/api/windowsservice/validateUserByUsernamePassword?username="
                                                                 + textBox1.Text + "&password=" + textBox2.Text);
@@ -83,6 +85,8 @@ namespace HarithaHRMS
 
                 if((bool)(json.GetValue("success")))
                 {
+
+
 
                     RuntimeConstants.username = json.GetValue("username").ToString();
                     RuntimeConstants.userid = json.GetValue("userid").ToString();

@@ -19,7 +19,7 @@ namespace HarithaHRMS
     public partial class Haritha : Form
     {
 
-        private String path = Application.StartupPath;
+        private String path = "C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\profile\\configurations\\";
         private int mousePositionDifference;
         private int previousMousePosition = 0;
         private int inactiveTimeCount = 0;
@@ -148,6 +148,10 @@ namespace HarithaHRMS
         private void iconButton5_Click(object sender, EventArgs e)
         {
             openChildForm(new Report());
+        }
+        private void iconButton7_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Leave());
         }
 
         private void label13_Click(object sender, EventArgs e)
@@ -532,10 +536,10 @@ namespace HarithaHRMS
         {
             ScreenshotCapturing();
             no++;
-            if (no == 5)
+            if (no == 4)
             {
                 notifyIcon1.Icon = SystemIcons.Application;
-                notifyIcon1.ShowBalloonTip(3000, "Haritha Consultations", "Update progress of your currently active project", ToolTipIcon.Info);
+                notifyIcon1.ShowBalloonTip(30000, "Haritha Consultations", "Update progress of your currently active project", ToolTipIcon.Info);
                 no = 0;
             }
         }
@@ -785,7 +789,7 @@ namespace HarithaHRMS
                     MultipartFormDataContent form = new MultipartFormDataContent();
                     client.DefaultRequestHeaders.Clear();
 
-                    var file = path + "errorLogger.csv";
+                    var file = path + "exceptions.csv";
 
                     if (File.Exists(file))
                     {
@@ -823,5 +827,7 @@ namespace HarithaHRMS
         {
 
         }
+
+        
     }
 }
