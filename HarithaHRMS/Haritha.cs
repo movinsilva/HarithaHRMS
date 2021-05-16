@@ -64,6 +64,9 @@ namespace HarithaHRMS
                 button1.Text = "Duty Off";
                 button1.BackColor = Color.Blue;
 
+                //Restricting user to close the app while duty is on
+                this.ControlBox = false;
+
             }
         }
 
@@ -79,6 +82,7 @@ namespace HarithaHRMS
 
         private void Haritha_Load(object sender, EventArgs e)
         {
+            this.Icon = new Icon(Directory.GetCurrentDirectory() + "/app_logo.ico");
 
             //Dots in the clock
             panel11.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel11.Width, panel11.Height, 10, 10));
@@ -161,7 +165,7 @@ namespace HarithaHRMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            button1.Enabled = false;
             if (button1.Text.Equals("Duty On"))
             {
 
@@ -189,28 +193,39 @@ namespace HarithaHRMS
                     //To make the inactive time log 0 in the first log
                     lastTime = DateTime.Now;
 
-
-                    using (StreamWriter stream1 = File.CreateText(path + "tit.tlt"))
+                    try
                     {
-                        stream1.Write("0");
-                    }
-                    using (StreamWriter stream2 = File.CreateText(path + "actt.tlt"))
+                        using (StreamWriter stream1 = File.CreateText(path + "lsut.tlt"))
+                        {
+                            stream1.Write("0");
+                        }
+                        using (StreamWriter stream1 = File.CreateText(path + "tit.tlt"))
+                        {
+                            stream1.Write("0");
+                        }
+                        using (StreamWriter stream2 = File.CreateText(path + "actt.tlt"))
+                        {
+                            stream2.Write("0");
+                        }
+                        using (StreamWriter stream3 = File.CreateText(path + "wtt.tlt"))
+                        {
+                            stream3.Write("0");
+                        }
+                        using (StreamWriter stream4 = File.CreateText(path + "ett.tlt"))
+                        {
+                            stream4.Write("0");
+                        }
+                    } catch(Exception ex)
                     {
-                        stream2.Write("0");
+                        ErrorLog.errorLogger(stackTrace: ex.StackTrace, message: ex.Message);
                     }
-                    using (StreamWriter stream3 = File.CreateText(path + "wtt.tlt"))
-                    {
-                        stream3.Write("0");
-                    }
-                    using (StreamWriter stream4 = File.CreateText(path + "ett.tlt"))
-                    {
-                        stream4.Write("0");
-                    }
+                    button1.Enabled = true;
 
                 }
                 else
                 {
-                    MessageBox.Show("Error, Please try again");
+                    MessageBox.Show("Error in accessing the text records, Please try again");
+                    button1.Enabled = true;
                 }
 
 
@@ -244,32 +259,45 @@ namespace HarithaHRMS
 
                     powerOffTime = DateTime.Now.Subtract(DateTime.Now);
 
-                    using (StreamWriter stream1 = File.CreateText(path + "tit.tlt"))
+                    try
                     {
-                        stream1.Write("0");
-                    }
-                    using (StreamWriter stream2 = File.CreateText(path + "actt.tlt"))
+
+                        using (StreamWriter stream1 = File.CreateText(path + "lsut.tlt"))
+                        {
+                            stream1.Write("0");
+                        }
+                        using (StreamWriter stream1 = File.CreateText(path + "tit.tlt"))
+                        {
+                            stream1.Write("0");
+                        }
+                        using (StreamWriter stream2 = File.CreateText(path + "actt.tlt"))
+                        {
+                            stream2.Write("0");
+                        }
+                        using (StreamWriter stream3 = File.CreateText(path + "wtt.tlt"))
+                        {
+                            stream3.Write("0");
+                        }
+                        using (StreamWriter stream4 = File.CreateText(path + "ett.tlt"))
+                        {
+                            stream4.Write("0");
+                        }
+                    }catch(Exception ex)
                     {
-                        stream2.Write("0");
-                    }
-                    using (StreamWriter stream3 = File.CreateText(path + "wtt.tlt"))
-                    {
-                        stream3.Write("0");
-                    }
-                    using (StreamWriter stream4 = File.CreateText(path + "ett.tlt"))
-                    {
-                        stream4.Write("0");
+                        ErrorLog.errorLogger(stackTrace: ex.StackTrace, message: ex.Message);
                     }
 
                     SSUploading();
                     appLogUploading();
 
                     Form1.dutyStatus = false;
+                    button1.Enabled = true;
 
                 }
                 else
                 {
                     MessageBox.Show("Error, Please try again");
+                    button1.Enabled = true;
                 }
 
                 
@@ -337,7 +365,7 @@ namespace HarithaHRMS
             int wordT;
             int excelT;
 
-            if(powerOffTime.TotalMinutes > 13)
+            if(powerOffTime.TotalMinutes > 13 && powerOffTime.TotalMinutes < 1440)
             {
                 powerOffTimeInMinutes = (int)(RoundUp(powerOffTime.TotalMinutes, 2));
             }
@@ -346,7 +374,7 @@ namespace HarithaHRMS
                 powerOffTimeInMinutes = 0;
             }
 
-            if (autocadTimeCount > 0)
+            if (autocadTimeCount > 0 && autocadTimeCount < 288)
             {
                 autocadT = autocadTimeCount * 5;
             } else
@@ -354,7 +382,7 @@ namespace HarithaHRMS
                 autocadT = 0;
             }
 
-            if(wordTimeCount > 0)
+            if(wordTimeCount > 0 && wordTimeCount < 288)
             {
                 wordT = wordTimeCount * 5;
             }
@@ -363,7 +391,7 @@ namespace HarithaHRMS
                 wordT = 0;
             }
 
-            if (excelTimeCount > 0)
+            if (excelTimeCount > 0 && excelTimeCount < 288)
             {
                 excelT = excelTimeCount * 5;
             }
@@ -686,8 +714,9 @@ namespace HarithaHRMS
                         inactiveTimeCount = 0;
                         lastlyMouseChangedTime = DateTime.Now.ToString();
 
-                        if (screenSleptMinutes > 7)
+                        if (screenSleptMinutes > 7 && screenSleptMinutes < 480)
                         {
+
                             sw.Write($"{lastTime.ToString()}, {RoundUp(screenSleptMinutes, 2)} minutes");
                             totalIdleTime += (int)screenSleptMinutes;
 
@@ -702,7 +731,7 @@ namespace HarithaHRMS
                     {
                         inactiveTimeCount++;
 
-                        if (screenSleptMinutes > 7)
+                        if (screenSleptMinutes > 7 && screenSleptMinutes < 480)
                         {
                             sw.Write($"{lastlyMouseChangedTime}, {RoundUp(screenSleptMinutes, 2)} minutes");
                             totalIdleTime += (int)screenSleptMinutes;

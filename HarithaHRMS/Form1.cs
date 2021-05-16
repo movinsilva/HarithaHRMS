@@ -51,6 +51,8 @@ namespace HarithaHRMS
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            this.Icon = new Icon(Directory.GetCurrentDirectory() + "/app_logo.ico");
+
             //Rounding corners
             panel1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 40, 40));
             textBox1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBox1.Width, textBox1.Height, 20, 20));
@@ -74,6 +76,11 @@ namespace HarithaHRMS
             {
 
                 System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\profile\\configurations\\");
+                System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Database\\");
+                System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\current specifications\\");
+                System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\readme files\\");
+                System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Previous updates\\");
+                System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\profile\\data\\");
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + 
                     "/api/windowsservice/validateUserByUsernamePassword?username="
@@ -101,13 +108,18 @@ namespace HarithaHRMS
                         if (File.Exists(lastUploadingTimeFile))
                         {
                             var time = File.ReadAllText(lastUploadingTimeFile);
-                            DateTime lastSsCapturedTime = DateTime.Parse(time);
-                            Haritha.powerOffTime = DateTime.Now.Subtract(lastSsCapturedTime);
 
-                            if(Haritha.powerOffTime.TotalMinutes > 13)
+                            if (time != "0")
                             {
-                                Haritha.totalDutyHours -= Haritha.powerOffTime.TotalMinutes;
+                                DateTime lastSsCapturedTime = DateTime.Parse(time);
+                                Haritha.powerOffTime = DateTime.Now.Subtract(lastSsCapturedTime);
+
+                                if (Haritha.powerOffTime.TotalMinutes > 13 && Haritha.powerOffTime.TotalMinutes < 1440)
+                                {
+                                    Haritha.totalDutyHours -= Haritha.powerOffTime.TotalHours;
+                                }
                             }
+                            
                         }
 
                         var inactiveTimeFile = path + "tit.tlt";
