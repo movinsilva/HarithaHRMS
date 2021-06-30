@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using HarithaHRMS.DTOs;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -88,19 +89,32 @@ namespace HarithaHRMS
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-                JObject json = JObject.Parse(content);
+                var result = LoginValuesDto.FromJson(content);
 
-                if((bool)(json.GetValue("success")))
+
+                if((bool)(result.Success))
                 {
 
-
-
-                    RuntimeConstants.username = json.GetValue("username").ToString();
-                    RuntimeConstants.userid = json.GetValue("userid").ToString();
+                    RuntimeConstants.username = result.Username.ToString();
+                    RuntimeConstants.userid = result.Userid.ToString();
                     RuntimeConstants.email = textBox1.Text;
 
-                    Haritha.totalDutyHours = (double)(json.GetValue("workingHours"));
-                    dutyStatus = (bool)(json.GetValue("islogedin"));
+                    Haritha.totalDutyHours = (double)(result.WorkingHours);
+                    dutyStatus = (bool)(result.Islogedin);
+
+                    try
+                    {
+                        RuntimeConstants.firstWorker = result.Userreport.LeaveViewModels[0].Username.ToString();
+                        RuntimeConstants.secondWorker = result.Userreport.LeaveViewModels[1].Username.ToString();
+                        RuntimeConstants.thirdWorker = result.Userreport.LeaveViewModels[2].Username.ToString();
+
+                       
+                    } catch (Exception ex)
+                    {
+                        ErrorLog.errorLogger(stackTrace: ex.StackTrace, message: ex.Message);
+                    }
+
+
 
                     if (dutyStatus)
                     {
@@ -109,7 +123,7 @@ namespace HarithaHRMS
                         {
                             var time = File.ReadAllText(lastUploadingTimeFile);
 
-                            if (time != "0")
+                            if (time != "0"  && time != "")
                             {
                                 DateTime lastSsCapturedTime = DateTime.Parse(time);
                                 Haritha.powerOffTime = DateTime.Now.Subtract(lastSsCapturedTime);
@@ -127,7 +141,14 @@ namespace HarithaHRMS
                         {
 
                             String totalIdleTime = File.ReadAllText(inactiveTimeFile);
-                            Haritha.totalIdleTime = int.Parse(totalIdleTime);
+                            if(totalIdleTime != "")
+                            {
+                                Haritha.totalIdleTime = int.Parse(totalIdleTime);
+                            } else
+                            {
+                                Haritha.totalIdleTime = 0;
+                            }
+                            
 
                         }
 

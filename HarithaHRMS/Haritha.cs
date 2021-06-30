@@ -82,6 +82,8 @@ namespace HarithaHRMS
 
         private void Haritha_Load(object sender, EventArgs e)
         {
+
+            //setting the app icon
             this.Icon = new Icon(Directory.GetCurrentDirectory() + "/app_logo.ico");
 
             //Dots in the clock
@@ -99,8 +101,33 @@ namespace HarithaHRMS
             //setting the current date
             label1.Text = DateTime.Now.ToString("dd MMMM yyyy");
 
+            //badge pictures
+           if(RuntimeConstants.username.Equals(RuntimeConstants.firstWorker.ToString()))
+            {
+                pictureBox1.Visible = true;
+                pictureBox2.Visible = false;
+                pictureBox3.Visible = false;
+            } else if(RuntimeConstants.username.Equals(RuntimeConstants.secondWorker.ToString()))
+            {
+                pictureBox1.Visible = false;
+                pictureBox2.Visible = true;
+                pictureBox3.Visible = false;
+            } else if(RuntimeConstants.username.Equals(RuntimeConstants.thirdWorker.ToString()))
+            {
+                pictureBox1.Visible = false;
+                pictureBox2.Visible = false;
+                pictureBox3.Visible = true;
+            }
+            else
+            {
+                pictureBox1.Visible = false;
+                pictureBox2.Visible = false;
+                pictureBox3.Visible = false;
+            }
 
-        }
+
+
+}
 
         private void label12_Click(object sender, EventArgs e)
         {
@@ -157,6 +184,11 @@ namespace HarithaHRMS
         {
             openChildForm(new Leave());
         }
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Rank());
+        }
+
 
         private void label13_Click(object sender, EventArgs e)
         {
@@ -853,6 +885,11 @@ namespace HarithaHRMS
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

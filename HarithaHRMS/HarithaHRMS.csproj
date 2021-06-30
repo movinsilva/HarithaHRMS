@@ -7,6 +7,10 @@
     <ApplicationIcon></ApplicationIcon>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />
     <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
