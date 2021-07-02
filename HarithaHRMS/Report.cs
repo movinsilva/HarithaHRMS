@@ -49,6 +49,7 @@ namespace HarithaHRMS
             {
                 //Process.Start(new ProcessStartInfo("cmd", "/c start http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + "/Reporter/ReturnReport?args=" + RuntimeConstants.userid + url));
                 System.Windows.Forms.Clipboard.SetText(url);
+                MessageBox.Show("Link copied. Paste this link in Browser");
             }
             catch (Exception ex)
             {

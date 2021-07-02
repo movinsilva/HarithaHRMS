@@ -153,7 +153,7 @@ namespace HarithaHRMS
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            openChildForm(new Projects());
+            openChildForm(new SecondaryProjects());
         }
 
         private void iconButton2_Click(object sender, EventArgs e)

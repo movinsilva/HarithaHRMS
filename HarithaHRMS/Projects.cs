@@ -66,8 +66,8 @@ namespace HarithaHRMS
                         }) ;
 
                     }
-
                 }
+
                 else
                 {
                     MessageBox.Show("Error!");

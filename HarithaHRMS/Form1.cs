@@ -67,6 +67,8 @@ namespace HarithaHRMS
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
 
+            
+
 
         }
 
@@ -157,7 +159,14 @@ namespace HarithaHRMS
                         {
 
                             string totalAutocadTime = File.ReadAllText(autocadTimeFile);
-                            Haritha.autocadTimeCount = int.Parse(totalAutocadTime);
+                            if(totalAutocadTime != "")
+                            {
+                                Haritha.autocadTimeCount = int.Parse(totalAutocadTime);
+                            } else
+                            {
+                                Haritha.autocadTimeCount = 0;
+                            }
+                            
 
                         }
 
@@ -166,7 +175,14 @@ namespace HarithaHRMS
                         {
 
                             string totalWordTime = File.ReadAllText(wordTimeFile);
-                            Haritha.wordTimeCount = int.Parse(totalWordTime);
+                            if(totalWordTime != "")
+                            {
+                                Haritha.wordTimeCount = int.Parse(totalWordTime);
+                            } else
+                            {
+                                Haritha.wordTimeCount = 0;
+                            }
+                            
 
                         }
 
@@ -175,7 +191,14 @@ namespace HarithaHRMS
                         {
 
                             string totalExcelTime = File.ReadAllText(excelTimeFile);
-                            Haritha.excelTimeCount = int.Parse(totalExcelTime);
+                            if(totalExcelTime != "")
+                            {
+                                Haritha.excelTimeCount = int.Parse(totalExcelTime);
+                            } else
+                            {
+                                Haritha.excelTimeCount = 0;
+                            }
+                            
 
                         }
 
