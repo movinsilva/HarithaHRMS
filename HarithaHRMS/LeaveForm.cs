@@ -58,8 +58,10 @@ public partial class LeaveForm : Form
                 Int32 unixTimestamp = (Int32)(dateTimePicker1.Value.Subtract(new
                                         DateTime(1970, 1, 1))).TotalSeconds;
 
+                string reason = textBox1.Text + "#" + comboBox1.SelectedItem.ToString();
+
                 HttpWebRequest webRequest;
-                String requestParams = "{" + $"\"Date\": \"{unixTimestamp}\", \"Reason\": \"{textBox1.Text}\", \"IsApproved\": 0, " +
+                String requestParams = "{" + $"\"Date\": \"{unixTimestamp}\", \"Reason\": \"{reason}\", \"IsApproved\": 0, " +
                     $"\"UserId\": \"{RuntimeConstants.userid}\"" + "}";
 
                 webRequest = (HttpWebRequest)WebRequest.Create($"http://{RuntimeConstants.ip}:{RuntimeConstants.port}/Api/windowsservice/CreateLeave");
@@ -74,8 +76,6 @@ public partial class LeaveForm : Form
                     requestStream.Write(byteArray, 0, byteArray.Length);
                 }
 
-
-
                 //HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
                 //string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
@@ -84,6 +84,7 @@ public partial class LeaveForm : Form
                 //var x = json.GetValue("success");
                 //var t = -8;
                 // Get the response.
+
                 using (WebResponse response = webRequest.GetResponse())
                 {
                     using (Stream responseStream = response.GetResponseStream())

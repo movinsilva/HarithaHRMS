@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -71,6 +72,13 @@ namespace HarithaHRMS
                                 user = "Declined by " + leave.Approved.Name;
                             }
                         }
+                        string r = leave.Reason;
+                        string type = "";
+                        if (r.Contains("#"))
+                        {
+                            type = leave.Reason.Split('#').Last();
+                        }
+                        
 
 
                         flowLayoutPanel1.Controls.Add(new LeaveListItem
@@ -79,6 +87,7 @@ namespace HarithaHRMS
                             //LeaveDay = leave.Date.AddDays(),
                             Status = leave.IsApproved,
                             Name = user,
+                            Type = type,
 
 
                         }); ;

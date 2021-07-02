@@ -42,6 +42,7 @@ namespace HarithaHRMS
         private int _status;
         private DateTime _leaveDay;
         private String _name;
+        private String _type;
        
         
 
@@ -79,6 +80,14 @@ namespace HarithaHRMS
             set { _name = value;
                 label2.Text = value;
             
+            }
+        }
+
+        public String Type
+        {
+            get { return _type; }
+            set { _type = value;
+                label3.Text = value;
             }
         }
 

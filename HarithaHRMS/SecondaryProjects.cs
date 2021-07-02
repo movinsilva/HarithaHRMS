@@ -16,6 +16,7 @@ namespace HarithaHRMS
 {
     public partial class SecondaryProjects : Form
     {
+        public static string currentProject;
         public SecondaryProjects()
         {
             InitializeComponent();
@@ -24,9 +25,13 @@ namespace HarithaHRMS
         private void SecondaryProjects_Load(object sender, EventArgs e)
         {
             comboBox1.Text = "Select your project";
+            if(currentProject != null)
+            {
+                label2.Text = currentProject;
+            }
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
-                    "/secondaryproject/GetSecondaryProjects");
+                    "/api/secondaryproject/GetSecondaryProjects");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
@@ -55,7 +60,7 @@ namespace HarithaHRMS
             try
             {
                 HttpWebRequest webRequest;
-                String requestParams = "{" + $"\"UserID\": \"{RuntimeConstants.userid}\", \"SecondaryProjectId\": \"{textBox1.Text}\", \"Remarks\": \"{textBox1.Text}\", "
+                String requestParams = "{" + $"\"UserID\": \"{RuntimeConstants.userid}\", \"SecondaryProjectId\": {comboBox1.SelectedValue}, \"Remarks\": \"{textBox1.Text}\""
                      + "}";
 
                 webRequest = (HttpWebRequest)WebRequest.Create($"http://{RuntimeConstants.ip}:{RuntimeConstants.port}/Api/SecondaryProject/SubmitProjectShift");
@@ -90,9 +95,10 @@ namespace HarithaHRMS
                         JObject json = JObject.Parse(Json);
                         if ((bool)(json.GetValue("success")))
                         {
-
-
-                            MessageBox.Show("Project changed successfully", comboBox1.Text);
+                            currentProject = ((DropdownModel)comboBox1.SelectedItem).Name;
+                            label2.Text = currentProject;
+                            MessageBox.Show("Project changed successfully", comboBox1.SelectedText);
+                            textBox1.Text = "";
                         }
                         else
                         {
