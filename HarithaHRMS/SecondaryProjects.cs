@@ -30,28 +30,34 @@ namespace HarithaHRMS
                 label2.Text = currentProject;
             }
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
-                    "/api/secondaryproject/GetSecondaryProjects");
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-            var result = SecondaryProjectsDto.FromJson(content);
-
-            var dropdownmodellist = new List<DropdownModel>();
-
-            foreach (var i in result)
+            try
             {
-                dropdownmodellist.Add(new DropdownModel() { ID = i.Id, Name = i.Name });
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
+                    "/SecondaryProject/GetSecondaryProjects");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                var result = SecondaryProjectsDto.FromJson(content);
+
+                var dropdownmodellist = new List<DropdownModel>();
+
+                foreach (var i in result)
+                {
+                    dropdownmodellist.Add(new DropdownModel() { ID = i.Id, Name = i.Name });
+                }
+
+
+                var bindingSource1 = new BindingSource();
+                bindingSource1.DataSource = dropdownmodellist;
+
+                comboBox1.DataSource = bindingSource1.DataSource;
+
+                comboBox1.DisplayMember = "Name";
+                comboBox1.ValueMember = "Id";
+            } catch(Exception ex)
+            {
+                ErrorLog.errorLogger(ex.StackTrace, ex.Message);
             }
-
-           
-            var bindingSource1 = new BindingSource();
-            bindingSource1.DataSource = dropdownmodellist;
-
-            comboBox1.DataSource = bindingSource1.DataSource;
-
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "Id";
 
         }
 

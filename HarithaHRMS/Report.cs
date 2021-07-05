@@ -42,8 +42,10 @@ namespace HarithaHRMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            var url = "http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + "/Reporter/ReturnReport?args=" + RuntimeConstants.userid + "*entity*third&hasparams=true&sql=&filename=MonthEndUserReport&reportname=Month%20End%20Draughtmen%20Report&IsDynamic=false";
+            string sMonth = DateTime.Now.ToString("MM");
+            string lastMonth = (int.Parse(sMonth) - 1).ToString();
+
+            var url = "http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + "/Reporter/ReturnReport?args=" + RuntimeConstants.userid + "*entity*third,"+ lastMonth + "*entity*forth&hasparams=true&sql=&filename=MonthEndUserReport&reportname=Month%20End%20Draughtmen%20Report&IsDynamic=false";
 
             try
             {
