@@ -101,6 +101,7 @@ namespace HarithaHRMS
             //setting the current date
             label1.Text = DateTime.Now.ToString("dd MMMM yyyy");
 
+
             //badge pictures
            if(RuntimeConstants.username.Equals(RuntimeConstants.firstWorker.ToString()))
             {

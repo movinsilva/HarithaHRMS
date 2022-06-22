@@ -7,11 +7,12 @@ namespace HarithaHRMS
 
     class RuntimeConstants
     {
-
+        //new ip = 178.128.23.41
+        //test port = 5050
         public static string haritha = "80";
         public static string k2 = "5051";
 
-        public static string ipAddress = "35.192.213.254";
+        public static string ipAddress = "admin.haritha.lk";
 
         public static string ip = ipAddress;
         public static string port = haritha;
@@ -21,9 +22,9 @@ namespace HarithaHRMS
         public static string email;
 
 
-        public static string firstWorker;
-        public static string secondWorker;
-        public static string thirdWorker;
+        public static string firstWorker = "....";
+        public static string secondWorker = "....";
+        public static string thirdWorker = "....";
 
     }
 }

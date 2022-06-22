@@ -50,7 +50,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(73, 276);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(345, 35);
+            this.label1.Size = new System.Drawing.Size(299, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Haritha Consultants (Pvt) Ltd";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -77,9 +77,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.label4.Location = new System.Drawing.Point(229, 316);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(51, 12);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Version 3.2";
+            this.label4.Text = "Version 4.0";
             // 
             // button1
             // 
@@ -132,7 +132,7 @@
             this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(19, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 40);
+            this.label2.Size = new System.Drawing.Size(85, 37);
             this.label2.TabIndex = 2;
             this.label2.Text = "Login";
             // 
@@ -155,12 +155,13 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(73, 229);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(192, 48);
+            this.label3.Size = new System.Drawing.Size(174, 45);
             this.label3.TabIndex = 3;
             this.label3.Text = "WELCOME";
             // 
             // Form1
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
