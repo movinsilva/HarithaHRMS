@@ -15,7 +15,7 @@ namespace QuickType
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class EngSubProjectList
+    public partial class EngSubProjectListDTO
     {
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -36,7 +36,7 @@ namespace QuickType
         public DateTimeOffset Deadline { get; set; }
 
         [JsonProperty("manHours")]
-        public long ManHours { get; set; }
+        public int ManHours { get; set; }
 
         [JsonProperty("progressFraction")]
         public long ProgressFraction { get; set; }
@@ -105,14 +105,14 @@ namespace QuickType
         public long AccessFailedCount { get; set; }
     }
 
-    public partial class EngSubProjectList
+    public partial class EngSubProjectListDTO
     {
-        public static EngSubProjectList[] FromJson(string json) => JsonConvert.DeserializeObject<EngSubProjectList[]>(json, QuickType.Converter.Settings);
+        public static EngSubProjectListDTO[] FromJson(string json) => JsonConvert.DeserializeObject<EngSubProjectListDTO[]>(json, QuickType.Converter.Settings);
     }
 
     public static class SerializeEngSubProject
     {
-        public static string ToJson(this EngSubProjectList[] self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
+        public static string ToJson(this EngSubProjectListDTO[] self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
     }
 
     internal static class ConverterEngSubProject

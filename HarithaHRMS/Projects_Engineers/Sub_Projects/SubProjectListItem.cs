@@ -34,7 +34,7 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
         public string draughtman
         {
             get { return _draughtman; }
-            set { _draughtman = value; label2.Text = value; }
+            set { _draughtman = value; label2.Text = "Assigned to " + value; }
         }
 
         public int allocatedHours
@@ -53,7 +53,12 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-
+            var subProjectCreationForm = new SubProjectCreationForm();
+            subProjectCreationForm.TopLevel = false;
+            subProjectCreationForm.TopMost = true;
+            this.Parent.Parent.Controls.Add(subProjectCreationForm);
+            subProjectCreationForm.BringToFront();
+            subProjectCreationForm.Show();
         }
     }
 }

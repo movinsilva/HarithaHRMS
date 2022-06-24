@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuickType;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
 {
     public partial class SubProjectEng : Form
     {
-        public SubProjectEng()
+        public SubProjectEng(string projectName)
         {
             InitializeComponent();
+            // displaying project name
+            label1.Text = projectName;
         }
 
         private void SubProjectEng_Load(object sender, EventArgs e)
@@ -25,21 +28,25 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
         private void populateSubProjects()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
-                "/api/ProjectApi/getUpcomingProjects");
+                "/api/ProjectApi/getSubLevelsForProjectId?id=" + "1");
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-            //var result = EngSubProjectList.FromJson(content);
+            var result = EngSubProjectListDTO.FromJson(content);
 
-            //foreach (var each in result)
-            //{
+            foreach (var each in result)
+            {
 
                 flowLayoutPanelSub.Controls.Add(new SubProjectListItem
-            {
-                name = "template testing in Ongoing",
-            });
+                {
+                    name = each.Name,
+                    draughtman = each.User.Name,
+                    allocatedHours = each.ManHours,
+                    
 
-            //}
+                }) ;
+
+            }
         }
     }
 }

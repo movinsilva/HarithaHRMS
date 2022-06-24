@@ -44,8 +44,9 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(62, 45);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(311, 27);
+            this.comboBox1.Size = new System.Drawing.Size(311, 25);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -76,7 +77,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(62, 295);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 15);
+            this.label1.Size = new System.Drawing.Size(131, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Currently Active Project :";
             // 
@@ -87,7 +88,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(86, 332);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 20);
+            this.label2.Size = new System.Drawing.Size(42, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "None";
             // 

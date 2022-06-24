@@ -83,7 +83,7 @@ namespace HarithaHRMS.Projects_Engineers
         private void iconButton1_Click_1(object sender, EventArgs e)
         {
             //opening a project to see sub projects
-            var subProjectEng = new SubProjectEng();
+            var subProjectEng = new SubProjectEng(label1.Text);
             subProjectEng.TopLevel = false;
             subProjectEng.TopMost = true;
             this.Parent.Parent.Parent.Parent.Controls.Add(subProjectEng);

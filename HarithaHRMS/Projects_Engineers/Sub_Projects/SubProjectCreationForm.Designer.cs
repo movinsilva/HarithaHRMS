@@ -51,9 +51,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.label1.Location = new System.Drawing.Point(24, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(263, 32);
+            this.label1.Size = new System.Drawing.Size(148, 32);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Lets divide the project!";
+            this.label1.Text = "Sub projects";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -215,6 +215,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SubProjectCreationForm";
             this.Text = "SubProjectCreationForm";
+            this.Load += new System.EventHandler(this.SubProjectCreationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
