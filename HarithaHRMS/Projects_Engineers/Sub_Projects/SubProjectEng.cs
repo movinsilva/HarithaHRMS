@@ -29,17 +29,17 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-            var result = EngSubProjectList.FromJson(content);
+            //var result = EngSubProjectList.FromJson(content);
 
-            foreach (var each in result)
-            {
+            //foreach (var each in result)
+            //{
 
                 flowLayoutPanelSub.Controls.Add(new SubProjectListItem
             {
                 name = "template testing in Ongoing",
             });
 
-            }
+            //}
         }
     }
 }
