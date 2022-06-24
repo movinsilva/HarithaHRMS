@@ -19,5 +19,10 @@ namespace HarithaHRMS.Projects_Engineers
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

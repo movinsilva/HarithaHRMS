@@ -51,6 +51,7 @@
             // 
             // flowLayoutPanelP
             // 
+            this.flowLayoutPanelP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.flowLayoutPanelP, "flowLayoutPanelP");
             this.flowLayoutPanelP.Name = "flowLayoutPanelP";
             this.flowLayoutPanelP.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
@@ -67,6 +68,7 @@
             // 
             this.Ongoing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(89)))), ((int)(((byte)(103)))));
             resources.ApplyResources(this.Ongoing, "Ongoing");
+            this.Ongoing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Ongoing.Controls.Add(this.flowLayoutPanelP);
             this.Ongoing.Name = "Ongoing";
             // 
@@ -74,6 +76,7 @@
             // 
             this.Completed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(89)))), ((int)(((byte)(103)))));
             resources.ApplyResources(this.Completed, "Completed");
+            this.Completed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Completed.Controls.Add(this.flowLayoutPanel2);
             this.Completed.Name = "Completed";
             // 
