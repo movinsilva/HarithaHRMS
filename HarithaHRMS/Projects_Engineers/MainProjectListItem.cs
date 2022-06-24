@@ -25,9 +25,9 @@ namespace HarithaHRMS.Projects_Engineers
 
         #region properties
         private string _projectName;
-        private 
+        private string code;
 
-        public string ProjectName
+        public string projectName
         {
             get { return _projectName; }
             set { _projectName = value;

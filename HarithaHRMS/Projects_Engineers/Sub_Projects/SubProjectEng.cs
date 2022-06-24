@@ -24,22 +24,22 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
 
         private void populateSubProjects()
         {
-            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
-            //    "/api/ProjectApi/getUpcomingProjects");
-            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            //string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
+                "/api/ProjectApi/getUpcomingProjects");
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-            //var result = EngSubProjectList.FromJson(content);
+            var result = EngSubProjectList.FromJson(content);
 
-            //foreach (var each in result)
-            //{
+            foreach (var each in result)
+            {
 
                 flowLayoutPanelSub.Controls.Add(new SubProjectListItem
             {
                 name = "template testing in Ongoing",
             });
 
-            //}
+            }
         }
     }
 }

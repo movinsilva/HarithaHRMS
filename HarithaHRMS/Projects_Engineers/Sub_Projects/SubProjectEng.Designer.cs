@@ -44,9 +44,9 @@
             // 
             // flowLayoutPanelSub
             // 
-            this.flowLayoutPanelSub.Location = new System.Drawing.Point(21, 83);
+            this.flowLayoutPanelSub.Location = new System.Drawing.Point(12, 71);
             this.flowLayoutPanelSub.Name = "flowLayoutPanelSub";
-            this.flowLayoutPanelSub.Size = new System.Drawing.Size(390, 379);
+            this.flowLayoutPanelSub.Size = new System.Drawing.Size(419, 411);
             this.flowLayoutPanelSub.TabIndex = 1;
             // 
             // SubProjectEng
