@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuickType;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,11 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
 {
     public partial class SubProjectListItem : UserControl
     {
-        public SubProjectListItem()
+        private EngSubProjectListDTO dto;
+        public SubProjectListItem(EngSubProjectListDTO dto)
         {
             InitializeComponent();
+            this.dto = dto;
         }
 
         private void SubProjectListItem_Load(object sender, EventArgs e)
@@ -26,6 +29,7 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
         private int _allocatedHours;
         private string _date;
         private string _status;
+        private string _deadline;
 
         public string name { 
             get { return _name; } 
@@ -49,11 +53,17 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
             set { _status = value; button1.Text = value; }
         }
 
+        public string deadline
+        {
+            get { return _deadline; }
+            set { _deadline = value; label6.Text = "(Deadline: " + value + ")"; }
+        }
+
         #endregion
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            var subProjectCreationForm = new SubProjectCreationForm();
+            var subProjectCreationForm = new SubProjectCreationForm(dto, dto.ProjectId);
             subProjectCreationForm.TopLevel = false;
             subProjectCreationForm.TopMost = true;
             this.Parent.Parent.Controls.Add(subProjectCreationForm);

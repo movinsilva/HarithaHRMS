@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanelSub = new System.Windows.Forms.FlowLayoutPanel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // label1
@@ -50,12 +51,29 @@
             this.flowLayoutPanelSub.Size = new System.Drawing.Size(419, 411);
             this.flowLayoutPanelSub.TabIndex = 1;
             // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(89)))), ((int)(((byte)(103)))));
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.iconButton1.IconColor = System.Drawing.Color.Lime;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 25;
+            this.iconButton1.Location = new System.Drawing.Point(351, 12);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(75, 35);
+            this.iconButton1.TabIndex = 2;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
             // SubProjectEng
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(89)))), ((int)(((byte)(103)))));
             this.ClientSize = new System.Drawing.Size(443, 494);
+            this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.flowLayoutPanelSub);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -71,5 +89,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSub;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

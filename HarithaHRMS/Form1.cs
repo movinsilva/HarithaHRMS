@@ -85,8 +85,8 @@ namespace HarithaHRMS
                 System.IO.Directory.CreateDirectory("C:\\Programme Data\\Programme Files\\System info\\Windows\\os Data\\Updates\\new\\profile\\data\\");
 
                 //testing
-                textBox1.Text = "isuru@haritha.lk";
-                textBox2.Text = "isuru123";
+                //textBox1.Text = "isuru@haritha.lk";
+                //textBox2.Text = "isuru123";
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port + 
                     "/api/windowsservice/validateUserByUsernamePassword?username="
@@ -103,8 +103,7 @@ namespace HarithaHRMS
                     RuntimeConstants.username = result.Username.ToString();
                     RuntimeConstants.userid = result.Userid.ToString();
                     RuntimeConstants.email = textBox1.Text;
-                    //RuntimeConstants.role = result.role
-                    RuntimeConstants.role = 1; //engineer
+                    RuntimeConstants.role = result.Role;
 
                     Haritha.totalDutyHours = (double)(result.WorkingHours);
                     dutyStatus = (bool)(result.Islogedin);

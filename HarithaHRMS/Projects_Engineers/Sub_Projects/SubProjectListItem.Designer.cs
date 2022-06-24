@@ -36,6 +36,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,9 +66,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(247, 17);
+            this.label3.Size = new System.Drawing.Size(116, 17);
             this.label3.TabIndex = 2;
-            this.label3.Text = "12 hours allocated (deadline: 30.06.2022)";
+            this.label3.Text = "12 hours allocated";
             // 
             // button1
             // 
@@ -133,11 +134,21 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "4";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(136, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(139, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = " (deadline: 30.06.2022)";
+            // 
             // SubProjectListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(89)))), ((int)(((byte)(113)))));
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.iconPictureBox1);
             this.Controls.Add(this.label4);
@@ -165,5 +176,6 @@
         private System.Windows.Forms.Label label4;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

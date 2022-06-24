@@ -18,7 +18,7 @@ namespace QuickType
     public partial class EngUpcomingProjectListDto
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("assigedUserId")]
         public Guid AssigedUserId { get; set; }

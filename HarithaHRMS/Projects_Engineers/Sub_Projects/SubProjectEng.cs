@@ -11,13 +11,16 @@ using System.Windows.Forms;
 
 namespace HarithaHRMS.Projects_Engineers.Sub_Projects
 {
+    
     public partial class SubProjectEng : Form
     {
-        public SubProjectEng(string projectName)
+        private int projectID;
+        public SubProjectEng(string projectName, int id)
         {
             InitializeComponent();
             // displaying project name
             label1.Text = projectName;
+            this.projectID = id;
         }
 
         private void SubProjectEng_Load(object sender, EventArgs e)
@@ -28,7 +31,7 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
         private void populateSubProjects()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
-                "/api/ProjectApi/getSubLevelsForProjectId?id=" + "1");
+                "/api/ProjectApi/getSubLevelsForProjectId?id=" + projectID);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
@@ -37,16 +40,27 @@ namespace HarithaHRMS.Projects_Engineers.Sub_Projects
             foreach (var each in result)
             {
 
-                flowLayoutPanelSub.Controls.Add(new SubProjectListItem
+                flowLayoutPanelSub.Controls.Add(new SubProjectListItem(each)
                 {
                     name = each.Name,
                     draughtman = each.User.Name,
                     allocatedHours = each.ManHours,
-                    
+                    deadline = each.Deadline.Date.ToString("yyyy/MM/dd")
+
 
                 }) ;
 
             }
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            var subProjectCreationForm = new SubProjectCreationForm(projectID);
+            subProjectCreationForm.TopLevel = false;
+            subProjectCreationForm.TopMost = true;
+            this.Parent.Parent.Controls.Add(subProjectCreationForm);
+            subProjectCreationForm.BringToFront();
+            subProjectCreationForm.Show();
         }
     }
 }

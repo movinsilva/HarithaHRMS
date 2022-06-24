@@ -47,7 +47,7 @@ namespace HarithaHRMS
                 foreach (var each in result)
                 {
 
-                    flowLayoutPanelP.Controls.Add(new MainProjectListItem
+                    flowLayoutPanelP.Controls.Add(new MainProjectListItem(each.Id)
                     {
                         ProjectName = each.Name,
                         projectCode = each.Code,
@@ -67,18 +67,18 @@ namespace HarithaHRMS
             }
 
             //completed projects loading
-            try
-            {
-                flowLayoutPanel2.Controls.Add(new MainProjectListItem
-                {
-                    ProjectName = "template testing"
-                });
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                ErrorLog.errorLogger(stackTrace: ex.StackTrace, message: ex.Message);
-            }
+            //try
+            //{
+            //    flowLayoutPanel2.Controls.Add(new MainProjectListItem
+            //    {
+            //        ProjectName = "template testing"
+            //    });
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    ErrorLog.errorLogger(stackTrace: ex.StackTrace, message: ex.Message);
+            //}
 
 
 

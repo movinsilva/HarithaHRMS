@@ -37,6 +37,9 @@ namespace HarithaHRMS.DTOs
 
         [JsonProperty("userreport")]
         public Userreport Userreport { get; set; }
+
+        [JsonProperty("role")]
+        public int Role { get; set; }
     }
 
     public partial class Userreport

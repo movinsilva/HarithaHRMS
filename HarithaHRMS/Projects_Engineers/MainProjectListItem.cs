@@ -11,9 +11,12 @@ namespace HarithaHRMS.Projects_Engineers
 {
     public partial class MainProjectListItem : UserControl
     {
-        public MainProjectListItem()
+        private int projectID;
+        public MainProjectListItem(int id)
         {
             InitializeComponent();
+            this.projectID = id;
+
         }
 
         private void MainProjectListItem_Load(object sender, EventArgs e)
@@ -83,7 +86,7 @@ namespace HarithaHRMS.Projects_Engineers
         private void iconButton1_Click_1(object sender, EventArgs e)
         {
             //opening a project to see sub projects
-            var subProjectEng = new SubProjectEng(label1.Text);
+            var subProjectEng = new SubProjectEng(label1.Text, projectID);
             subProjectEng.TopLevel = false;
             subProjectEng.TopMost = true;
             this.Parent.Parent.Parent.Parent.Controls.Add(subProjectEng);

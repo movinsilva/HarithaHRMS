@@ -18,7 +18,7 @@ namespace QuickType
     public partial class DraughtmaListDto
     {
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

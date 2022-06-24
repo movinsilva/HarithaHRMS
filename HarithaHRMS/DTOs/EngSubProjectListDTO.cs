@@ -18,13 +18,13 @@ namespace QuickType
     public partial class EngSubProjectListDTO
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("userID")]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [JsonProperty("projectID")]
-        public long ProjectId { get; set; }
+        public int ProjectId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -60,7 +60,7 @@ namespace QuickType
         public string Name { get; set; }
 
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("userName")]
         public string UserName { get; set; }
