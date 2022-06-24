@@ -59,8 +59,15 @@ namespace HarithaHRMS
             if (Form1.dutyStatus)
             {
                 timer1.Start();
-                timer2.Start();
-                timer3.Start();
+
+                //timer2 : used to ss capturing
+                //timer3 : used for applog (idle time)
+                if (RuntimeConstants.role == 0)
+                {
+                    timer2.Start();
+                    timer3.Start();
+                }
+                
                 button1.Text = "Duty Off";
                 button1.BackColor = Color.Blue;
 
@@ -154,7 +161,14 @@ namespace HarithaHRMS
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            openChildForm(new SecondaryProjects());
+            if (RuntimeConstants.role == 0)
+            {
+                openChildForm(new SecondaryProjects());
+            } else if (RuntimeConstants.role == 1)
+            {
+                openChildForm(new Projects_engineer());
+            }
+            
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -187,7 +201,10 @@ namespace HarithaHRMS
         }
         private void iconButton6_Click(object sender, EventArgs e)
         {
-            openChildForm(new Rank());
+            if (RuntimeConstants.role == 0)
+            {
+                openChildForm(new Rank());
+            }
         }
 
 
@@ -217,8 +234,17 @@ namespace HarithaHRMS
                     MessageBox.Show("Start Your Work", "Duty ON");
                     isDutyOn = true;
                     timer1.Start();
-                    timer2.Start();
-                    timer3.Start();
+
+                    //timer2 : used to ss capturing
+                    //timer3 : used for applog (idle time)
+                    if (RuntimeConstants.role == 0)
+                    {
+                        timer2.Start();
+                        timer3.Start();
+                    }
+
+                    
+                    
 
                     //Restricting user to close the app while duty is on
                     this.ControlBox = false;
@@ -284,9 +310,16 @@ namespace HarithaHRMS
                     label12.Text = "Uploading... Please Wait";
                     button1.Text = "Duty On";
                     button1.BackColor = Color.LimeGreen;
+
                     timer1.Stop();
-                    timer2.Stop();
-                    timer3.Stop();
+
+                    if (RuntimeConstants.role == 0)
+                    {
+                        timer2.Stop();
+                        timer3.Stop();
+                    }
+                    
+                    
 
                     isDutyOn = false;
 

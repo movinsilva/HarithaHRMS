@@ -9,7 +9,7 @@ namespace HarithaHRMS
     {
         //new ip = 178.128.23.41
         //test port = 5050
-        public static string haritha = "80";
+        public static string haritha = "5050";
         public static string k2 = "5051";
 
         public static string ipAddress = "admin.haritha.lk";
@@ -25,6 +25,10 @@ namespace HarithaHRMS
         public static string firstWorker = "....";
         public static string secondWorker = "....";
         public static string thirdWorker = "....";
+
+        //role 0: draughtsman
+        //     1: engineer
+        public static int role = -1;
 
     }
 }
