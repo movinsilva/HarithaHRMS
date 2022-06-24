@@ -37,22 +37,23 @@ namespace HarithaHRMS
 
             try
             {
-                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
-                //    "/api/ProjectApi/getUpcomingProjects");
-                //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                //string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://" + RuntimeConstants.ip + ":" + RuntimeConstants.port +
+                    "/api/projectapi/getongoingprojects");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                string content = new StreamReader(response.GetResponseStream()).ReadToEnd();
 
-                //var result = EngUpcomingProjectListDto.FromJson(content);
+                var result = EngUpcomingProjectListDto.FromJson(content);
 
-                //foreach (var each in result)
-                //{
+                foreach (var each in result)
+                {
 
                     flowLayoutPanelP.Controls.Add(new MainProjectListItem
                     {
-                        ProjectName = "template testing in Ongoing",
+                        ProjectName = each.Name,
+
                     });
 
-                //}
+                }
 
                 
 
