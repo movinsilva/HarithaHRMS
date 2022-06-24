@@ -24,7 +24,7 @@ namespace QuickType
         public Guid AssigedUserId { get; set; }
 
         [JsonProperty("deadline")]
-        public DateTimeOffset Deadline { get; set; }
+        public DateTime Deadline { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -41,7 +41,7 @@ namespace QuickType
         [JsonProperty("isNotified")]
         public bool IsNotified { get; set; }
 
-        [JsonProperty("assigedUser")]
+        [JsonProperty("user")]
         public AssigedUser AssigedUser { get; set; }
     }
 
