@@ -60,6 +60,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SubProjectEng";
             this.Text = "SubProjectEng";
+            this.Load += new System.EventHandler(this.SubProjectEng_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

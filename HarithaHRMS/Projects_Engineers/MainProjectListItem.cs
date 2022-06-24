@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HarithaHRMS.Projects_Engineers.Sub_Projects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,13 +18,10 @@ namespace HarithaHRMS.Projects_Engineers
 
         private void MainProjectListItem_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void MainProjectListItem_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         #region properties
         private String _projectName;
@@ -40,6 +38,17 @@ namespace HarithaHRMS.Projects_Engineers
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            //opening a project to see sub projects
+            var subProjectEng = new SubProjectEng();
+            subProjectEng.TopLevel = false;
+            subProjectEng.TopMost = true;
+            this.Parent.Parent.Parent.Controls.Add(subProjectEng);
+            subProjectEng.BringToFront();
+            subProjectEng.Show();
         }
     }
 }
