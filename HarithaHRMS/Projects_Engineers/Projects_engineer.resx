@@ -94,13 +94,13 @@
     <value>1</value>
   </data>
   <data name="flowLayoutPanelP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 8</value>
+    <value>-1, -1</value>
   </data>
   <data name="flowLayoutPanelP.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
   <data name="flowLayoutPanelP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 429</value>
+    <value>502, 444</value>
   </data>
   <data name="flowLayoutPanelP.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -133,7 +133,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="Ongoing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>457, 431</value>
+    <value>505, 444</value>
   </data>
   <data name="Ongoing.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -220,7 +220,7 @@
     <value>500, 40</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 88</value>
+    <value>0, 92</value>
   </data>
   <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -229,7 +229,7 @@
     <value>3, 3</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 479</value>
+    <value>513, 492</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
