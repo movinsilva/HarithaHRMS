@@ -50,6 +50,9 @@ namespace HarithaHRMS
                     flowLayoutPanelP.Controls.Add(new MainProjectListItem
                     {
                         ProjectName = each.Name,
+                        projectCode = each.Code,
+                        createby = each.AssigedUser.Name,
+                        datetime = each.Deadline
 
                     });
 

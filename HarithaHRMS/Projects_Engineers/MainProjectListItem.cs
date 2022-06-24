@@ -25,13 +25,42 @@ namespace HarithaHRMS.Projects_Engineers
 
         #region properties
         private string _projectName;
-        private string code;
+        private string _projectCode;
+        private DateTime _datetime;
+        private string _createBy;
 
-        public string projectName
+        public string ProjectName
         {
             get { return _projectName; }
             set { _projectName = value;
                 label1.Text = value;
+            }
+        }
+        public string projectCode
+        {
+            get { return _projectCode; }
+            set
+            {
+                _projectCode = value;
+                label2.Text = value;
+            }
+        }
+        public DateTime datetime
+        {
+            get { return _datetime; }
+            set
+            {
+                _datetime = value;
+                label4.Text = value.ToString();
+            }
+        }
+        public string createby
+        {
+            get { return _createBy; }
+            set
+            {
+                _createBy = value;
+                label3.Text = value;
             }
         }
         #endregion
@@ -60,6 +89,16 @@ namespace HarithaHRMS.Projects_Engineers
             this.Parent.Parent.Parent.Parent.Controls.Add(subProjectEng);
             subProjectEng.BringToFront();
             subProjectEng.Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
